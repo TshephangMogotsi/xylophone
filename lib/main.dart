@@ -11,10 +11,23 @@ class XylophoneApp extends StatefulWidget {
 }
 
 class _XylophoneAppState extends State<XylophoneApp> {
-
   void playSound(int noteNumber) {
     final player = AudioCache();
     player.play('note$noteNumber.wav');
+  }
+
+  Expanded buildKey(Color color, int noteNumber) {
+    return Expanded(
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          primary: color,
+        ),
+        onPressed: () {
+          playSound(noteNumber);
+        },
+        child: null,
+      ),
+    );
   }
 
   @override
@@ -27,81 +40,13 @@ class _XylophoneAppState extends State<XylophoneApp> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Expanded(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.red,
-                  ),
-                  onPressed: () {
-                    playSound(1);
-                  },
-                  child: null,
-                ),
-              ),
-              Expanded(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.orange,
-                  ),
-                  onPressed: () {
-                    playSound(2);
-                  },
-                  child: null,
-                ),
-              ),
-              Expanded(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.yellow,
-                  ),
-                  onPressed: () {
-                   playSound(3);
-                  },
-                  child: null,
-                ),
-              ),
-              Expanded(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: Colors.green),
-                  onPressed: () {
-                    playSound(4);
-                  },
-                  child: null,
-                ),
-              ),
-              Expanded(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.teal,
-                  ),
-                  onPressed: () {
-                    playSound(5);
-                  },
-                  child: null,
-                ),
-              ),
-              Expanded(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.blue,
-                  ),
-                  onPressed: () {
-                   playSound(6);
-                  },
-                  child: null,
-                ),
-              ),
-              Expanded(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.purple,
-                  ),
-                  onPressed: () {
-                    playSound(7);
-                  },
-                  child: null,
-                ),
-              ),
+              buildKey(Colors.red, 1),
+              buildKey(Colors.orange, 2),
+              buildKey(Colors.yellow, 3),
+              buildKey(Colors.green, 4),
+              buildKey(Colors.teal, 5),
+              buildKey(Colors.blue, 6),
+              buildKey(Colors.purple, 7),
             ],
           ),
         ),
